@@ -23,9 +23,11 @@ class CategoriesPage extends StatelessWidget {
             .map((catData) => CategoryItem(
                   //Mapping function
                   catData
-                      .title, //This provides a mapping function to the 'title' in 'Dummy Data'
+                      .id, //This provides a mapping function to the 'id' in 'Dummy Data'
                   catData
-                      .color, //This provides a mapping function to the 'color' in 'Dummy Data'
+                      .title, //This provides a mapping function to the 'title' in 'Dummy Data'
+                  catData.color,
+                  //This provides a mapping function to the 'color' in 'Dummy Data'
                 ))
             .toList(),
       ),

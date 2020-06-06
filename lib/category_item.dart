@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 // import 'package:meal_app/category_meals_page.dart';
-import './category_meals_page.dart';
+// import './category_meals_page.dart';
 
 class CategoryItem extends StatelessWidget {
   final color;
-  final String title;
+  final String title; //Property which is a string
+  final String id; //Property which is a string
 
-  CategoryItem(this.title, this.color);
+  CategoryItem(this.id, this.title,
+      this.color); //A constructor with the name of the 'class-name','CategoryItem'
 
   void selectCategory(BuildContext ctx) {
     Navigator.of(
       // Special flutter feature for navigating between pages/screens
       ctx,
-    ).push(MaterialPageRoute(builder: (_) {
-      //This is responsible for addition of the new page/screen on top of the previous one. It also provides an empty builder function because it isn't required
-      return CategoryMealsPage(); //This is a function that returns the page to be added when you select any of the category item
-    }));
+    ).pushNamed('/category-meals', arguments: {
+      'id': id,
+      'title': title
+    }); // This is used to place a new page over the previous page using the 'pushNamed' function and its passes two arguments,'title' and 'id'
   }
 
   @override
