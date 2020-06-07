@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:meal_app/category_meals_page.dart';
-// import './category_meals_page.dart';
+
+import './category_meals_page.dart'; //Make sure to import this when using a 'named route'.
 
 class CategoryItem extends StatelessWidget {
   final color;
@@ -14,7 +14,8 @@ class CategoryItem extends StatelessWidget {
     Navigator.of(
       // Special flutter feature for navigating between pages/screens
       ctx,
-    ).pushNamed('/category-meals', arguments: {
+    ).pushNamed(CategoryMealsPage.routeName, arguments: {
+      //Using the 'named route' approach
       'id': id,
       'title': title
     }); // This is used to place a new page over the previous page using the 'pushNamed' function and its passes two arguments,'title' and 'id'

@@ -35,10 +35,14 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight
                     .bold, //This provides the font weight texttheme title
               ))),
-      home:
-          CategoriesPage(), //This makes the Category Scree/Page to become the homepage
+      // home:
+      //     CategoriesPage(), //This makes the Category Screen/Page to become the homepage
+      initialRoute: '/', //The default value is '/'
       routes: {
-        '/category-meals': (ctx) => CategoryMealsPage()
+        //Using named routes is more preferable
+        '/': (ctx) =>
+            CategoriesPage(), //This also makes the Category Screen/Page to become the homepage but this method is used in the 'named route' method
+        CategoryMealsPage.routeName: (ctx) => CategoryMealsPage()
       }, //This 'routes' feature helps to set up routes easily. It is better to set up routes like this incase the project you're working on is a large one.
     );
   }

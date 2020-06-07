@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import './dummy_data.dart';
+
 class CategoryMealsPage extends StatelessWidget {
+  static const routeName = '/category-meals';
   // final String categoryId; //Property which is a string
   // final String categoryTitle;//Property which is a string
 
@@ -12,17 +15,20 @@ class CategoryMealsPage extends StatelessWidget {
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryTitle = routeArgs['title']; //This is used for routing
     final categoryId = routeArgs['id']; //This is used for routing
+    final categoryMeals = DUMMY_MEALS.where((meal) {
+      //The function 'where' returns as a new iterable and it can be converted to a list with the 'toList()' method which only contain elements that satisfy a condition we specify in an anonymous function we pass to where.
+      return meal.categories.contains(categoryId);
+    }).toList();
 
     return Scaffold(
         appBar: AppBar(
           title: Text(categoryTitle),
         ),
-        body: Center(
-            child: Text(
-          'The Recipes For The Category',
-          style: TextStyle(
-              color: Theme.of(context)
-                  .accentColor), //Provides the text with a text style color using the 'Theme.of(context)' function
-        )));
+        body: ListView.builder(
+          itemBuilder: (ctx, index) {
+            return Text(categoryMeals[index].title);
+          },
+          itemCount: categoryMeals.length,
+        ));
   }
 }
