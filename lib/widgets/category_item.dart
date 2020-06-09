@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './category_meals_page.dart'; //Make sure to import this when using a 'named route'.
+import '../screens/category_meals_page.dart'; //Make sure to import this when using a 'named route'.
 
 class CategoryItem extends StatelessWidget {
   final color;
