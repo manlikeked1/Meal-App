@@ -24,7 +24,9 @@ class MealItem extends StatelessWidget {
   void selectMeal() {} //this is a method
 
   String get complexityText {
+    //Due to the fact that 'Complexity' is an enum. I can't call it directly so I have to use a 'get' function to call it
     switch (complexity) {
+      //Here, I used a switch-case function in place of an 'if' function
       case Complexity.Simple:
         return 'Simple';
         break;
@@ -40,7 +42,9 @@ class MealItem extends StatelessWidget {
   }
 
   String get affordabilityText {
+    //Due to the fact that 'Affordability' is an enum. I can't call it directly so I have to use a 'get' function to call it
     switch (affordability) {
+      //Here, I used a switch-case function in place of an 'if' function
       case Affordability.Affordable:
         return 'Affordable';
         break;
@@ -97,9 +101,13 @@ class MealItem extends StatelessWidget {
                       10, //Here, I;m telling flutter that I want the object to be 10px to the right
                   child: Container(
                     width: 300, //This is the width of the container
-                    color: Colors
-                        .black54, //This gives it a background color of 'black54' the 54 means that the color, black has an opacity of 54
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    decoration: BoxDecoration(
+                      //This allows me to style the object by giving it a 'border radius' and a background color
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors
+                          .black54, //This gives it a background color of 'black54' the 54 means that the color, black has an opacity of 54
+                    ),
                     child: Text(
                       title,
                       style: TextStyle(
@@ -118,33 +126,41 @@ class MealItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment
+                    .spaceAround, //This is an in built flutter enum.
                 children: <Widget>[
                   Row(
                     children: <Widget>[
                       Icon(Icons.schedule),
                       SizedBox(
+                        //This is used to give a certain distance between objects
                         width: 6,
                       ),
-                      Text('$duration min'),
+                      Text(
+                          '$duration min'), //Using string interpolation ($). I used string interpolation here because duration is expressed as an integer in its normal form but it needs to be passed as a string here
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.work),
+                      Icon(Icons.work), //This is an in built flutter icon
                       SizedBox(
+                        //This is used to give a certain distance between objects
                         width: 6,
                       ),
-                      Text(complexityText),
+                      Text(
+                          complexityText), //Here I used the complexity getter that was created above
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
+                      Icon(Icons
+                          .attach_money), //This is an in built flutter icon
                       SizedBox(
+                        //This is used to give a certain distance between objects
                         width: 6,
                       ),
-                      Text(affordabilityText),
+                      Text(
+                          affordabilityText), //Here I used the affordability getter that was created above
                     ],
                   ),
                 ],
