@@ -23,6 +23,38 @@ class MealItem extends StatelessWidget {
 
   void selectMeal() {} //this is a method
 
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.Simple:
+        return 'Simple';
+        break;
+      case Complexity.Challenging:
+        return 'Challenging';
+        break;
+      case Complexity.Hard:
+        return 'Difficult';
+        break;
+      default:
+        return 'Unknown';
+    }
+  }
+
+  String get affordabilityText {
+    switch (affordability) {
+      case Affordability.Affordable:
+        return 'Affordable';
+        break;
+      case Affordability.Pricey:
+        return 'Moderate';
+        break;
+      case Affordability.Luxurious:
+        return 'Expensive';
+        break;
+      default:
+        return 'Unknown';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -51,14 +83,73 @@ class MealItem extends StatelessWidget {
                       topLeft: Radius.circular(15),
                       topRight: Radius.circular(15)),
                   child: Image.network(
-                      imageUrl, //this is used because we are getting our images from a web url on the internet. If we were getting it from the computer directlty, we would said "image.assets" instead of "image.network"
+                      imageUrl, //This is used because we are getting our images from a web url on the internet. If we were getting it from the computer directlty, we would said "image.assets" instead of "image.network"
                       height: 250,
                       width: double.infinity,
                       fit: BoxFit
                           .cover), //The boxfit.cover argument helps to resize and crop the image so that it fits nicely into the container
-                )
+                ),
+                Positioned(
+                  //This is an inbuilt dart function that is used to give specific positions
+                  bottom:
+                      20, //Here, I;m telling flutter that I want the object to be 20px to the bottom
+                  right:
+                      10, //Here, I;m telling flutter that I want the object to be 10px to the right
+                  child: Container(
+                    width: 300, //This is the width of the container
+                    color: Colors
+                        .black54, //This gives it a background color of 'black54' the 54 means that the color, black has an opacity of 54
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                      ),
+                      softWrap:
+                          true, //In case the text is too long for the card container, it helps to wrap it
+                      overflow: TextOverflow
+                          .clip, //In case this does not fit into its box even with wrapping, the text will simply just fade out and not overflow
+                    ),
+                  ),
+                ),
               ],
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.schedule),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text('$duration min'),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.work),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(complexityText),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.attach_money),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(affordabilityText),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
