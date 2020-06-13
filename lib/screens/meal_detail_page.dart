@@ -25,6 +25,10 @@ class MealDetailPage extends StatelessWidget {
             //This helps to arrange diffrent parts of a page/screen one after the other
             children: <Widget>[
               Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.white54),
+                margin: EdgeInsets.symmetric(vertical: 10),
                 //This is the container for the image
                 height: 400, //This gives it a height of 400
                 width: double
