@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../screens/meal_detail_page.dart';
 import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
   final String title; //properties
   final String imageUrl; //properties
   final int duration; //properties
@@ -10,18 +12,16 @@ class MealItem extends StatelessWidget {
   final Affordability affordability; //properties
 
   MealItem(
-      {@required
-          this.title,
-      @required
-          this.imageUrl,
-      @required
-          this.affordability,
-      @required
-          this.complexity,
-      @required
-          this.duration}); //this is a constructor which uses named arguments
+      {@required this.title,
+      @required this.imageUrl,
+      @required this.affordability,
+      @required this.complexity,
+      @required this.duration,
+      @required this.id}); //this is a constructor which uses named arguments
 
-  void selectMeal() {} //this is a method
+  void selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(MealDetailPage.routeName, arguments: id);
+  } //this is a method//In this method, when we click on an item it takes us to another page or screen. That is what the navigator pushedNamed is for.
 
   String get complexityText {
     //Due to the fact that 'Complexity' is an enum. I can't call it directly so I have to use a 'get' function to call it
@@ -63,7 +63,8 @@ class MealItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       //Inkwell  is used to have a clickable item which has a ripple effect
-      onTap: selectMeal,
+      onTap: () => selectMeal(
+          context), //Here, we use an anonymous function so that we can pass context as an argument to selectMeal
       child: Card(
         shape: RoundedRectangleBorder(
           //Here, I was able to override the default shape of a card by giving it a 'RoundedRectangularBorder'
