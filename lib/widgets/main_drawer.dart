@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../screens/filters_screen.dart';
+
 class MainDrawer extends StatelessWidget {
   //Using a builder method to create ListTiles
-  Widget buildListTile(String title, IconData icon) {
+  Widget buildListTile(String title, IconData icon, Function tapHandler) {
     //Here we passed two arguments into the builder, 'title' and 'icon'
     return ListTile(
       leading: Icon(
@@ -18,9 +20,7 @@ class MainDrawer extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.white),
       ),
-      onTap: () {
-        // ...
-      },
+      onTap: tapHandler,
     );
   }
 
@@ -50,11 +50,13 @@ class MainDrawer extends StatelessWidget {
           ),
           SizedBox(height: 25), //This helps to give a spacing
           //Using the 'buildListTile' method to pass in 'meals' for the first ListTile and 'icons.restaurant' for the second ListTile
-          buildListTile(
-            'Meals',
-            Icons.restaurant,
-          ),
-          buildListTile('Filters', Icons.settings),
+          buildListTile('Meals', Icons.restaurant, () {
+            Navigator.of(context).pushNamed(
+                '/'); //The '/' here is used becuase the categoryPage is the main route
+          }),
+          buildListTile('Filters', Icons.settings, () {
+            Navigator.of(context).pushNamed(FiltersScreen.routeName);
+          }),
         ],
       ),
     );
