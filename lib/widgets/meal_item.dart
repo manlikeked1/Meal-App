@@ -9,18 +9,27 @@ class MealItem extends StatelessWidget {
   final String imageUrl; //properties
   final int duration; //properties
   final Complexity complexity; //properties
-  final Affordability affordability; //properties
+  final Affordability affordability;
+  final Function removeItem; //properties
 
-  MealItem(
-      {@required this.title,
-      @required this.imageUrl,
-      @required this.affordability,
-      @required this.complexity,
-      @required this.duration,
-      @required this.id}); //this is a constructor which uses named arguments
+  MealItem({
+    @required this.title,
+    @required this.imageUrl,
+    @required this.affordability,
+    @required this.complexity,
+    @required this.duration,
+    @required this.id,
+    @required this.removeItem,
+  }); //this is a constructor which uses named arguments
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailPage.routeName, arguments: id);
+    Navigator.of(context)
+        .pushNamed(MealDetailPage.routeName, arguments: id)
+        .then((result) {
+      if (result != null) {
+        removeItem(result);
+      }
+    });
   } //this is a method//In this method, when we click on an item it takes us to another page or screen. That is what the navigator pushedNamed is for.
 
   String get complexityText {

@@ -51,11 +51,12 @@ class MainDrawer extends StatelessWidget {
           SizedBox(height: 25), //This helps to give a spacing
           //Using the 'buildListTile' method to pass in 'meals' for the first ListTile and 'icons.restaurant' for the second ListTile
           buildListTile('Meals', Icons.restaurant, () {
-            Navigator.of(context).pushNamed(
+            Navigator.of(context).pushReplacementNamed(
                 '/'); //The '/' here is used becuase the categoryPage is the main route
           }),
           buildListTile('Filters', Icons.settings, () {
-            Navigator.of(context).pushNamed(FiltersScreen.routeName);
+            Navigator.of(context).pushReplacementNamed(FiltersScreen
+                .routeName); //'pushReplacementNamed' is used in place of 'pushedNamed' because I was trying to avoid stacking pages on top of one another. Instead, I just replaced the page with the previous one
           }),
         ],
       ),
