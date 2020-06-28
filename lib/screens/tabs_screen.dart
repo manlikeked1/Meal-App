@@ -8,6 +8,7 @@ import '../screens/favorites_page.dart';
 import '../screens/categories_page.dart';
 
 class TabsScreen extends StatefulWidget {
+  static const routeName = '/tabs';
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }

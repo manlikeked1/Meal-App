@@ -4,6 +4,7 @@ import './screens/filters_screen.dart';
 import './screens/tabs_screen.dart';
 import './screens/meal_detail_page.dart';
 import './screens/category_meals_page.dart';
+import './screens/home_screen.dart';
 // import './screens/categories_page.dart';
 
 void main() => runApp(MyApp());
@@ -45,10 +46,11 @@ class MyApp extends StatelessWidget {
       routes: {
         //Using named routes is more preferable//This is a route table
         '/': (ctx) =>
-            TabsScreen(), //This also makes the Tabs Screen/Page to become the homepage but this method is used in the 'named route' method
+            HomeScreen(), //This also makes the Tabs Screen/Page to become the homepage but this method is used in the 'named route' method
         CategoryMealsPage.routeName: (ctx) => CategoryMealsPage(),
         MealDetailPage.routeName: (ctx) => MealDetailPage(),
         FiltersScreen.routeName: (ctx) => FiltersScreen(),
+        TabsScreen.routeName: (ctx) => TabsScreen(),
       }, //This 'routes' feature helps to set up routes easily. It is better to set up routes like this incase the project you're working on is a large one.
       // onGenerateRoute: (settings) {
       //   print(settings.arguments)
