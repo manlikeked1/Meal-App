@@ -40,27 +40,6 @@ class _HomeState extends State<HomeScreen> {
                 },
                 child: Text('Go To Meals'),
               ),
-              // SizedBox(
-              //   height: 800,
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10.0),
-              //   child: OutlineButton(
-
-              //     borderSide: BorderSide(width: 2.0),
-              //     // color: Colors.yellow,
-              //     splashColor: Theme.of(context).accentColor,
-              //     shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(20),),,
-              //     child: Text(
-              //       'Go To Meals',
-              //       style: TextStyle(color: Colors.white, fontSize: 18),
-              //     ),
-              //     onPressed: () {
-              //       Navigator.of(context).pushNamed(TabsScreen.routeName);
-              //     },
-              //   ),
-              // )
             ],
           ),
         ),
@@ -98,7 +77,7 @@ class PurplePainter extends CustomPainter {
     ovalPath.lineTo(0, height);
 
     //Close line to reset it back
-    // ovalPath.close();
+    ovalPath.close();
 
     paint.color = Colors.purple.shade500;
     canvas.drawPath(ovalPath, paint);
@@ -109,46 +88,3 @@ class PurplePainter extends CustomPainter {
     return oldDelegate != this;
   }
 }
-
-// return Scaffold(
-//   // appBar: AppBar(),
-//   body: Container(
-//     decoration: BoxDecoration(color: Theme.of(context).accentColor),
-//     child: Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: <Widget>[
-//         Center(
-//           child: Container(
-//             decoration: BoxDecoration(
-//                 color: Theme.of(context).primaryColor,
-//                 borderRadius: BorderRadius.circular(10)),
-//             child: Text(
-//               'Welcome!',
-//               style: TextStyle(color: Colors.white, fontSize: 45),
-//             ),
-//           ),
-//         ),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         FlatButton(
-//           onPressed: () {
-//             Navigator.of(context).pushNamed(TabsScreen.routeName);
-//           },
-//           child: Container(
-//             // decoration: BoxDecoration(
-//             //     borderRadius: BorderRadius.circular(20),
-//             //     color: Colors.purple),
-//             child: Text(
-//               'Go To Meal>>>',
-//               style: TextStyle(
-//                 fontWeight: FontWeight.bold,
-//                 fontSize: 25,
-//               ),
-//             ),
-//           ),
-//         ),
-//       ],
-//     ),
-//   ),
-// );
