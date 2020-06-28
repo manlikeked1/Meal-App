@@ -28,17 +28,20 @@ class _HomeState extends State<HomeScreen> {
                       fontSize: 45,
                     )),
               ),
-              RaisedButton(
-                color: Colors.purple.shade700,
-                textColor: Colors.black,
-                padding: EdgeInsets.symmetric(vertical: 10),
-                elevation: 20,
-                // highlightElevation: 10,
-                shape: Border.all(width: 2, color: Colors.black),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(TabsScreen.routeName);
-                },
-                child: Text('Go To Meals'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RaisedButton(
+                  color: Colors.purple.shade700,
+                  textColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  elevation: 20,
+                  // highlightElevation: 10,
+                  shape: Border.all(width: 2, color: Colors.white),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(TabsScreen.routeName);
+                  },
+                  child: Text('Go To Meals'),
+                ),
               ),
             ],
           ),
