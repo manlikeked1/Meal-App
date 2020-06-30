@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../screens/tabs_screen.dart';
+// import '../screens/categories_page.dart';
+// import '../screens/category_meals_page.dart';
 
 import '../screens/filters_screen.dart';
 
@@ -51,8 +54,8 @@ class MainDrawer extends StatelessWidget {
           SizedBox(height: 25), //This helps to give a spacing
           //Using the 'buildListTile' method to pass in 'meals' for the first ListTile and 'icons.restaurant' for the second ListTile
           buildListTile('Meals', Icons.restaurant, () {
-            Navigator.of(context).pushReplacementNamed(
-                '/'); //The '/' here is used becuase the categoryPage is the main route
+            Navigator.of(context).pushReplacementNamed(TabsScreen
+                .routeName); //The '/' here is used becuase the categoryPage is the main route
           }),
           buildListTile('Filters', Icons.settings, () {
             Navigator.of(context).pushReplacementNamed(FiltersScreen

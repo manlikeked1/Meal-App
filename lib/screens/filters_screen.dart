@@ -53,6 +53,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
               // style: TextStyle(color: Colors.white),
             ),
           ),
+          Divider(
+            //This provides each item with a division line
+            color: Theme.of(context)
+                .accentColor, //This gives the division line a ThemeColor of the accent color.
+          ),
           Expanded(
             child: ListView(
               children: <Widget>[
@@ -62,6 +67,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     _glutenFree = newValue;
                   });
                 }),
+                Divider(
+                  //This provides each item with a division line
+                  color: Theme.of(context)
+                      .accentColor, //This gives the division line a ThemeColor of the accent color.
+                ),
                 _buildSwitchListTile(
                     'Vegetarian', 'Only include vegetarian meals.', _vegetarian,
                     (newValue) {
@@ -69,12 +79,22 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     _vegetarian = newValue;
                   });
                 }),
+                Divider(
+                  //This provides each item with a division line
+                  color: Theme.of(context)
+                      .accentColor, //This gives the division line a ThemeColor of the accent color.
+                ),
                 _buildSwitchListTile(
                     'Vegan', 'Only include vegan meals.', _vegan, (newValue) {
                   setState(() {
                     _vegan = newValue;
                   });
                 }),
+                Divider(
+                  //This provides each item with a division line
+                  color: Theme.of(context)
+                      .accentColor, //This gives the division line a ThemeColor of the accent color.
+                ),
                 _buildSwitchListTile(
                     'Lactose-free',
                     'Only include lactose-free meals.',
@@ -82,6 +102,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   setState(() {
                     _lactoseFree = newValue;
                   });
+                  // Divider(
+                  //   //This provides each item with a division line
+                  //   color: Theme.of(context)
+                  //       .accentColor, //This gives the division line a ThemeColor of the accent color.
+                  // );
                 }),
               ],
             ),

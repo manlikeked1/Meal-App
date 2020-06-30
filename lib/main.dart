@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:meal_app/screens/categories_page.dart';
 
 import './screens/filters_screen.dart';
 import './screens/tabs_screen.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
         MealDetailPage.routeName: (ctx) => MealDetailPage(),
         FiltersScreen.routeName: (ctx) => FiltersScreen(),
         TabsScreen.routeName: (ctx) => TabsScreen(),
+        // CategoriesPage.routeName: (ctx) => CategoriesPage(),
       }, //This 'routes' feature helps to set up routes easily. It is better to set up routes like this incase the project you're working on is a large one.
       // onGenerateRoute: (settings) {
       //   print(settings.arguments)
