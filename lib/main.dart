@@ -16,15 +16,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'KedMeals',
       theme: ThemeData(
-          brightness: Brightness.light,
-          primarySwatch:
-              Colors.indigo, //This provides the primary color of the app
-          accentColor: Colors.amber,
-          canvasColor:
-              Colors.black45, //This provides the canvas color of the app
+          // brightness: Brightness.dark,
+
+          //This provides the primary color of the app
+          primarySwatch: Colors.indigo,
+          accentColor: Colors.amberAccent,
+
+          //Provides the app with a dark mode
+          canvasColor: Colors.black87,
+
+          //Default Font-family
           fontFamily: "Raleway",
+
+          //Default text-theme
           textTheme: ThemeData.dark().textTheme.copyWith(
-              //Provides the app with a dark mode
               body1: TextStyle(
                 color: Color.fromRGBO(
                     20, 51, 51, 1), //This gives the color gradient
@@ -34,7 +39,7 @@ class MyApp extends StatelessWidget {
                     20, 51, 51, 1), //This gives the color gradient
               ),
               title: TextStyle(
-                color: Colors.white70,
+                color: Colors.white,
                 fontSize: 20,
                 fontFamily: "RobotoCondensed",
                 fontWeight: FontWeight

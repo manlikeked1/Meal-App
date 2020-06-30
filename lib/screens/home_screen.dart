@@ -1,6 +1,9 @@
+//This whole screen represents the homepage of the application.
+
 import 'package:flutter/material.dart';
 
 import '../screens/tabs_screen.dart';
+// import '../screens/home_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
