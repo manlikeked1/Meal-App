@@ -5,11 +5,24 @@ import '../widgets/main_drawer.dart';
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/FiltersScreen';
 
+  //'SaveFilters' Function
+  final Function saveFilters;
+
+  //'CurrentFilters' Function
+  final Map<String, bool> currentFilters;
+
+  //'SaveFilters' and 'CurrentFilters' Constructor
+  FiltersScreen(this.currentFilters, this.saveFilters);
+
+  // FiltersScreen(this.currentFilters);
+
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
+  //Here, a builder widget is used instead of repeating ...
+  //the code in mutiple places.
   Widget _buildSwitchListTile(
     String title,
     String description,
@@ -36,11 +49,38 @@ class _FiltersScreenState extends State<FiltersScreen> {
   bool _vegan = false;
   bool _lactoseFree = false;
 
+  //This sets the initial state when the state gets creates
+  @override
+  void initState() {
+    _glutenFree = widget.currentFilters['gluten'];
+    _lactoseFree = widget.currentFilters['lactose'];
+    _vegetarian = widget.currentFilters['vegetarian'];
+    _vegan = widget.currentFilters['vegan'];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Filters'),
+
+        //In the aspect of the 'onPressed', you can reach out to your widgete using the
+        //Special Widget Property
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: () {
+              final selectedFilters = {
+                'gluten': _glutenFree,
+                'lactose': _lactoseFree,
+                'vegan': _vegan,
+                'vegetarian': _vegetarian,
+              };
+              widget.saveFilters(selectedFilters);
+            },
+          )
+        ],
       ),
       drawer: MainDrawer(), //Adding a drawer in the filters screen
       body: Column(
@@ -61,6 +101,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
           Expanded(
             child: ListView(
               children: <Widget>[
+                //This is what the builder widget does. It allows what has...
+                //been created above to be called
                 _buildSwitchListTile('Gluten-free',
                     'Only include gluten-free meals.', _glutenFree, (newValue) {
                   setState(() {
@@ -72,6 +114,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   color: Theme.of(context)
                       .accentColor, //This gives the division line a ThemeColor of the accent color.
                 ),
+
+                //This is what the builder widget does. It allows what has...
+                //been created above to be called
                 _buildSwitchListTile(
                     'Vegetarian', 'Only include vegetarian meals.', _vegetarian,
                     (newValue) {
@@ -84,6 +129,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   color: Theme.of(context)
                       .accentColor, //This gives the division line a ThemeColor of the accent color.
                 ),
+
+                //This is what the builder widget does. It allows what has...
+                //been created above to be called
                 _buildSwitchListTile(
                     'Vegan', 'Only include vegan meals.', _vegan, (newValue) {
                   setState(() {
@@ -95,6 +143,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   color: Theme.of(context)
                       .accentColor, //This gives the division line a ThemeColor of the accent color.
                 ),
+
+                //This is what the builder widget does. It allows what has...
+                //been created above to be called
                 _buildSwitchListTile(
                     'Lactose-free',
                     'Only include lactose-free meals.',
@@ -102,11 +153,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   setState(() {
                     _lactoseFree = newValue;
                   });
-                  // Divider(
-                  //   //This provides each item with a division line
-                  //   color: Theme.of(context)
-                  //       .accentColor, //This gives the division line a ThemeColor of the accent color.
-                  // );
                 }),
               ],
             ),
