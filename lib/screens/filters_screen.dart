@@ -89,8 +89,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
             padding: EdgeInsets.all(20),
             child: Text(
               'Adjust your meal selection.',
-              style: Theme.of(context).textTheme.title,
-              // style: TextStyle(color: Colors.white),
+              // style: Theme.of(context).textTheme.title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontFamily: "RobotoCondensed"),
             ),
           ),
           Divider(

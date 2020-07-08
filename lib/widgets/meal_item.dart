@@ -108,15 +108,15 @@ class MealItem extends StatelessWidget {
                   bottom:
                       20, //Here, I;m telling flutter that I want the object to be 20px to the bottom
                   right:
-                      10, //Here, I;m telling flutter that I want the object to be 10px to the right
+                      1, //Here, I;m telling flutter that I want the object to be 10px to the right
                   child: Container(
                     width: 300, //This is the width of the container
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     decoration: BoxDecoration(
                       //This allows me to style the object by giving it a 'border radius' and a background color
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(2),
                       color: Colors
-                          .black54, //This gives it a background color of 'black54' the 54 means that the color, black has an opacity of 54
+                          .blueGrey, //This gives it a background color of 'black54' the 54 means that the color, black has an opacity of 54
                     ),
                     child: Text(
                       title,

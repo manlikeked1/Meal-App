@@ -40,9 +40,10 @@ class MainDrawer extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             // color: Theme.of(context).accentColor,//This gives the background color to the container
             decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
-                borderRadius: BorderRadius.circular(
-                    10)), //This is a feature on flutter that helps you to add more than one form of decoration
+              color: Theme.of(context).accentColor,
+              // borderRadius: BorderRadius.circular(
+              //     10),
+            ), //This is a feature on flutter that helps you to add more than one form of decoration
             child: Text(
               'Cooking Up!',
               style: TextStyle(
