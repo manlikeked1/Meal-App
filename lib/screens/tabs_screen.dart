@@ -4,25 +4,37 @@ import '../widgets/main_drawer.dart';
 
 import '../screens/favorites_page.dart';
 import '../screens/categories_page.dart';
+import '../models/meal.dart';
 
 class TabsScreen extends StatefulWidget {
+  //Property
+  final List<Meal> favoriteMeals;
+  //Constructor
+  TabsScreen(this.favoriteMeals);
+
   static const routeName = '/tabs';
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, dynamic>> _pages = [
-    //List o widgets that you want to render in each tab
-    {'page': CategoriesPage(), 'title': 'Categories'},
-    {
-      'page': FavoritesPage(),
-      'title': 'Favorites Section',
-    }
-  ];
+  List<Map<String, dynamic>> _pages;
 
-  int _selectedPageIndex =
-      0; //THis is a property which is an integer which is '0' initially
+  //This is a property which is an integer which is '0' initially
+  int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      //List o widgets that you want to render in each tab
+      {'page': CategoriesPage(), 'title': 'Categories'},
+      {
+        'page': FavoritesPage(widget.favoriteMeals),
+        'title': 'Favorites Section',
+      }
+    ];
+    super.initState();
+  }
 
   void _selectPage(int index) {
     //This is the method that 'ontap' listener uses

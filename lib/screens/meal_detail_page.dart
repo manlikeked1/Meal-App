@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import '../dummy_data.dart';
 
 class MealDetailPage extends StatelessWidget {
-  static const routeName =
-      '/meal-detail'; //This creates a static const which is used for the routeNmae navigation
+  //This creates a static const which is used for the routeNmae navigation
+  static const routeName = '/meal-detail';
 
+  //Property
+  final Function toggleFavorite;
+  final Function isMealFavorite;
+
+  //Constructor
+  MealDetailPage(this.toggleFavorite, this.isMealFavorite);
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments
@@ -125,11 +131,10 @@ class MealDetailPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pop(
-              mealId); //The "Navigator.of(context).pop()" removes screens that are on top of the stack.
-        },
-        child: Icon(Icons.delete_outline),
+        onPressed: () => toggleFavorite(mealId),
+        child: Icon(
+          isMealFavorite(mealId) ? Icons.favorite : Icons.favorite_border,
+        ),
       ),
     );
   }

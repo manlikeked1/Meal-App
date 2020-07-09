@@ -10,7 +10,7 @@ class MealItem extends StatelessWidget {
   final int duration; //properties
   final Complexity complexity; //properties
   final Affordability affordability;
-  final Function removeItem; //properties
+  //properties
 
   MealItem({
     @required this.title,
@@ -19,7 +19,6 @@ class MealItem extends StatelessWidget {
     @required this.complexity,
     @required this.duration,
     @required this.id,
-    @required this.removeItem,
   }); //this is a constructor which uses named arguments
 
   void selectMeal(BuildContext context) {
@@ -27,7 +26,7 @@ class MealItem extends StatelessWidget {
         .pushNamed(MealDetailPage.routeName, arguments: id)
         .then((result) {
       if (result != null) {
-        removeItem(result);
+        // removeItem(result);
       }
     });
   } //this is a method//In this method, when we click on an item it takes us to another page or screen. That is what the navigator pushedNamed is for.

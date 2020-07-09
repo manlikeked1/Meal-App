@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meal> _availableMeals = DUMMY_MEALS;
+  List<Meal> _favoriteMeal = [];
 
   //Method
   //This method should be called from inside the 'Filter's Screen'
@@ -50,6 +51,23 @@ class _MyAppState extends State<MyApp> {
         return true;
       }).toList();
     });
+  }
+
+  void _toggleFavorite(String mealId) {
+    final existingIndex = _favoriteMeal.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favoriteMeal.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favoriteMeal.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+
+  bool _isMealFavorite(String id) {
+    return _favoriteMeal.any((meal) => meal.id == id);
   }
 
   @override
@@ -95,9 +113,10 @@ class _MyAppState extends State<MyApp> {
             HomeScreen(), //This also makes the Tabs Screen/Page to become the homepage but this method is used in the 'named route' method
         CategoryMealsPage.routeName: (ctx) =>
             CategoryMealsPage(_availableMeals),
-        MealDetailPage.routeName: (ctx) => MealDetailPage(),
+        MealDetailPage.routeName: (ctx) =>
+            MealDetailPage(_toggleFavorite, _isMealFavorite),
         FiltersScreen.routeName: (ctx) => FiltersScreen(_filters, _setFilters),
-        TabsScreen.routeName: (ctx) => TabsScreen(),
+        TabsScreen.routeName: (ctx) => TabsScreen(_favoriteMeal),
         // CategoriesPage.routeName: (ctx) => CategoriesPage(),
       }, //This 'routes' feature helps to set up routes easily. It is better to set up routes like this incase the project you're working on is a large one.
       // onGenerateRoute: (settings) {
@@ -105,7 +124,7 @@ class _MyAppState extends State<MyApp> {
       //   return MaterialPageRoute(builder: (ctx) => CategoriesPage())
       // },//This takes a function. This is used in scenarios where you build highly dynamic applications  where you have route names that are generated dynamically during the lifetime of the app and hence you can know them in advance when you building the app
       onUnknownRoute: (settings) {
-        return MaterialPageRoute(builder: (ctx) => TabsScreen());
+        return MaterialPageRoute(builder: (ctx) => TabsScreen(_favoriteMeal));
       }, //This does not take a function. It also takes a anonymous function
       //'onUnknownRoute' is reached when flutter failed to build a page or screen with all other measures
       //In other words, when you define nothing as a root route, if you don't use 'onGenerateRoute' then in the end as a last resort before it throws an error, Flutter will try to use onUknownRoute to show something on the screen
