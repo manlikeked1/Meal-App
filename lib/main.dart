@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
 
           //This provides the primary color of the app
           primarySwatch: Colors.indigo,
-          // accentColor: Colors.amberAccent,
+          accentColor: Colors.amberAccent,
 
           //Provides the app with a dark mode
           canvasColor: Colors.black87,
